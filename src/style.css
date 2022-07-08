@@ -27,7 +27,6 @@ li {
   box-shadow: 0 0 0 3px rgba(190, 190, 190, 0.568);
 }
 
-
 /* Icons */
 
 .checkbox {
@@ -101,7 +100,7 @@ li {
   border: none;
   width: 100%;
   padding: 15px;
-  color:  gray;
+  color: gray;
   cursor: pointer;
 }
 
@@ -115,6 +114,6 @@ li {
   z-index: 10;
 }
 
-.addItem::placeholder{
+.addItem::placeholder {
   font-style: italic;
 }

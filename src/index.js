@@ -1,6 +1,4 @@
-import _ from 'lodash';
 import './style.css';
-
 
 /* ----------========== JAVASCRIPT ELEMENTS CLASSES ==========---------- */
 class Tasks {
@@ -10,18 +8,6 @@ class Tasks {
 
   // Add task to (called in UI by - addItem input)
   addTask = (task) => this.tasks.push(task);
-
-  // Delete all completed (called in UI by - clear All completed button)
-  clearCompleted = () => {
-    this.tasks.forEach((element) => {
-      clearCompleted = () => this.tasks = this.tasks.filter((task) => task.completed !== true);
-    })
-  }
-
-  // Refresh - delete all tasks (called in UI by - refresh icon)
-  refreshAll = () => {
-    this.tasks = [];
-  }
 }
 
 class Task {
@@ -32,44 +18,48 @@ class Task {
   }
 }
 
-/* ----------========== INDEX HTML  ==========---------- */ 
+/* ----------========== INDEX HTML  ==========---------- */
 
 const todoList = new Tasks();
 const todoListUL = document.getElementById('todoListUL');
 
 /* ----------========== CREATE HTML ELEMENTS ==========---------- */
-//method create individual task HTML
+
+// method create individual task HTML
+
 const createTaskHtml = (description, taskIndex) => {
   // create Li container for the task
+
   const taskLi = document.createElement('li');
   taskLi.classList.add('todoItem');
   todoListUL.appendChild(taskLi);
 
-  // create checkbox div 
+  // create checkbox div
+
   const checkbox = document.createElement('div');
-  checkbox.classList.add('checkbox')
+  checkbox.classList.add('checkbox');
   checkbox.id = taskIndex;
 
+  // create input
 
-  // create input 
   const inputDescription = document.createElement('input');
   inputDescription.classList.add('todoItemInput');
   inputDescription.value = description;
 
-  // create dots 
+  // create dots
   const dotsIconDiv = document.createElement('div');
-  dotsIconDiv.classList.add('dragDots')
+  dotsIconDiv.classList.add('dragDots');
 
-  //append 
-  taskLi.append(checkbox, inputDescription, dotsIconDiv)
+  //append
+  taskLi.append(checkbox, inputDescription, dotsIconDiv);
 };
 
 //method that create in the html
 const createTasksListHTML = () => {
   todoList.tasks.forEach((e, index) => {
-    createTaskHtml(e.description, index)
-  })
-}
+    createTaskHtml(e.description, index);
+  });
+};
 
 /* ----------========== WHEN PAGE IS LOAD PAGE GET LOCALSTORAGE ==========---------- */
 //When page loads, populate html based on localstorage array
@@ -82,26 +72,18 @@ if (localStorage.getItem('data') !== null) {
   todoList.tasks = [];
 }
 
-//create element in todo list 
+//create element in todo list
 /* const addTasktoTodoList = new Task(inputDescription.value, false, checkbox.id);
 todoList.addTask(addTasktoTodoList); */
-
 
 /* ----------========== ADD ITEM ==========---------- */
 
 const addItemInput = document.getElementById('addItemInput');
-const enterIcon = document.getElementById('enterIcon')
-
-console.log(todoList.tasks)
+const enterIcon = document.getElementById('enterIcon');
 
 enterIcon.addEventListener('click', () => {
-  console.log('Hello', addItemInput.value)
   createTaskHtml(addItemInput.value, todoList.tasks.length);
-  todoList.addTask(new Task(addItemInput.value, false, todoList.tasks.length))
-  console.log(todoList.tasks)
+  todoList.addTask(new Task(addItemInput.value, false, todoList.tasks.length));
   // Store new collection in Local Storage
   localStorage.setItem('data', JSON.stringify(todoList.tasks));
-})
-
-//set to local storage
-// create element html
+});
