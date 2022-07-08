@@ -1,3 +1,5 @@
+/* tslint:disable:max-classes-per-file */
+
 import './style.css';
 
 /* ----------========== JAVASCRIPT ELEMENTS CLASSES ==========---------- */
@@ -50,11 +52,11 @@ const createTaskHtml = (description, taskIndex) => {
   const dotsIconDiv = document.createElement('div');
   dotsIconDiv.classList.add('dragDots');
 
-  //append
+  // append
   taskLi.append(checkbox, inputDescription, dotsIconDiv);
 };
 
-//method that create in the html
+// method that create in the html
 const createTasksListHTML = () => {
   todoList.tasks.forEach((e, index) => {
     createTaskHtml(e.description, index);
@@ -62,8 +64,8 @@ const createTasksListHTML = () => {
 };
 
 /* ----------========== WHEN PAGE IS LOAD PAGE GET LOCALSTORAGE ==========---------- */
-//When page loads, populate html based on localstorage array
-//Check if there is data stored
+// When page loads, populate html based on localstorage array
+// Check if there is data stored
 
 if (localStorage.getItem('data') !== null) {
   todoList.tasks = JSON.parse(localStorage.getItem('data'));
@@ -72,7 +74,7 @@ if (localStorage.getItem('data') !== null) {
   todoList.tasks = [];
 }
 
-//create element in todo list
+// create element in todo list
 /* const addTasktoTodoList = new Task(inputDescription.value, false, checkbox.id);
 todoList.addTask(addTasktoTodoList); */
 
