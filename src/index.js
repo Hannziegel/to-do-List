@@ -1,25 +1,6 @@
-/* eslint no-use-before-define: 0 */
-/* eslint-disable max-classes-per-file */
-
 import './style.css';
-
-/* ----------========== JAVASCRIPT ELEMENTS CLASSES ==========---------- */
-class Tasks {
-  constructor() {
-    this.tasks = [];
-  }
-
-  // Add task to (called in UI by - addItem input)
-  addTask = (task) => this.tasks.push(task);
-}
-
-class Task {
-  constructor(description, completed, index) {
-    this.description = description;
-    this.completed = completed;
-    this.idex = index;
-  }
-}
+import { Tasks } from './Tasks.js';
+import { Task } from './Task.js';
 
 /* ----------========== INDEX HTML  ==========---------- */
 
@@ -35,19 +16,24 @@ const createTaskHtml = (description, taskIndex) => {
 
   const taskLi = document.createElement('li');
   taskLi.classList.add('todoItem');
+  taskLi.id = parseFloat(taskIndex) + 1;
   todoListUL.appendChild(taskLi);
 
   // create checkbox div
 
   const checkbox = document.createElement('div');
   checkbox.classList.add('checkbox');
-  checkbox.id = taskIndex;
 
   // create input
 
   const inputDescription = document.createElement('input');
   inputDescription.classList.add('todoItemInput');
   inputDescription.value = description;
+  // change todo
+  inputDescription.addEventListener('change', () => {
+    todoList.editTask(inputDescription.value, taskLi.id);
+    localStorage.setItem('data', JSON.stringify(todoList.tasks));
+  });
 
   // create dots
   const dotsIconDiv = document.createElement('div');
@@ -86,7 +72,18 @@ const enterIcon = document.getElementById('enterIcon');
 
 enterIcon.addEventListener('click', () => {
   createTaskHtml(addItemInput.value, todoList.tasks.length);
-  todoList.addTask(new Task(addItemInput.value, false, todoList.tasks.length));
+  todoList.addTask(new Task(addItemInput.value, false, todoList.tasks.length + 1));
   // Store new collection in Local Storage
   localStorage.setItem('data', JSON.stringify(todoList.tasks));
+});
+
+/* ----------========== REMOVE ITEM ==========---------- */
+
+window.addEventListener('click', (event) => {
+  if (event.target.classList.contains('dragDots')) {
+    todoList.removeTask(event.target.parentElement.id);
+    event.target.parentElement.remove();
+    localStorage.setItem('data', JSON.stringify(todoList.tasks));
+    document.location.reload();
+  }
 });
