@@ -1,4 +1,5 @@
-/* eslint:disable:max-classes-per-file */
+/* eslint no-use-before-define: 0 */
+/* eslint-disable max-classes-per-file */
 
 import './style.css';
 
