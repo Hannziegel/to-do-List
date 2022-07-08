@@ -1,3 +1,119 @@
-.hello {
-  color: red;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  padding: 5px;
+  font-size: medium;
+  color: rgba(83, 83, 83, 0.842);
+}
+
+li {
+  list-style: none;
+  border-bottom: 1px solid ghostwhite;
+  padding: 5px;
+}
+
+.cardContainer {
+  margin-top: 30vh;
+  box-shadow: 0 0 0 3px rgba(190, 190, 190, 0.568);
+}
+
+/* Icons */
+
+.checkbox {
+  background-repeat: no-repeat;
+  background-image: url(bx-checkbox.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.dragDots {
+  background-repeat: no-repeat;
+  background-image: url(bx-dots-vertical-rounded.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.refreshList {
+  background-repeat: no-repeat;
+  background-image: url(bx-refresh.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.trashIcon {
+  background-repeat: no-repeat;
+  background-image: url(bx-trash.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.checkedBox {
+  background-repeat: no-repeat;
+  background-image: url(bx-checkbox-checked.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.enterIcon {
+  background-repeat: no-repeat;
+  background-image: url(bx-subdirectory-left.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.listTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.clearAll {
+  border: none;
+  width: 100%;
+  padding: 15px;
+  color: gray;
+  cursor: pointer;
+}
+
+.todoItemInput {
+  border: none;
+  width: 50vw;
+}
+
+.addItemInput {
+  padding: 10px;
+  z-index: 10;
+}
+
+.addItem::placeholder {
+  font-style: italic;
 }

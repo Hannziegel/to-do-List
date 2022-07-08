@@ -6,6 +6,21 @@
     <title>Wbpack Exercise</title>
 </head>
 <body>
-    <h1>Hello webpack!</h1>
+    <ul class="cardContainer">
+        <li class="listTitleContainer">
+            <h2>Today's To Do</h2>
+            <div class="refreshList"></div>
+        </li>
+        <li>
+            <ul class="todoList" id="todoListUL">
+                <li class="todoItem addItem">
+                    <input  class="todoItemInput addItemInput" type="text"  placeholder="Add to your list..." id="addItemInput">
+                    <div class="enterIcon" id="enterIcon"></div>
+                </li>
+                <!--  CREATE DYNAMICALLY -->
+            </ul>
+        </li>
+        <button class="clearAll">Clear All completed</button>
+    </ul>
 </body>
 </html>
