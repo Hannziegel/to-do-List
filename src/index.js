@@ -1,6 +1,6 @@
 import './style.css';
-import { Tasks } from './Tasks.js';
-import { Task } from './Task.js';
+import  Tasks  from './Tasks.js';
+import  Task  from './Task.js';
 
 /* ----------========== INDEX HTML  ==========---------- */
 

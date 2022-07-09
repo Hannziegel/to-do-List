@@ -1,4 +1,4 @@
-export class Tasks {
+export default class Tasks {
   constructor() {
     this.tasks = [];
   }
@@ -8,15 +8,15 @@ export class Tasks {
 
   // Remove task
   removeTask = (taskIndex) => {
-    this.tasks = this.tasks.filter((task) => task.index !== parseInt(taskIndex));
+    this.tasks = this.tasks.filter((task) => task.index !== parseInt(taskIndex, 10));
     this.tasks.forEach((element, newIndex) => {
       element.index = newIndex + 1;
-    })
+    });
   };
 
   // Edit task
 
-  editTask = (newDescription, index) => this.tasks[index].description = newDescription;
+  editTask = (newDescription, index) => { this.tasks[index].description = newDescription; };
 
   // Delete all completed (called in UI by - clear All completed button)
   clearCompleted = () => {
