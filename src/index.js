@@ -8,7 +8,7 @@ const todoList = new Tasks();
 const todoListUL = document.getElementById('todoListUL');
 const addItemInput = document.getElementById('addItemInput');
 const enterIcon = document.getElementById('enterIcon');
-const clearAllCompleted = document.getElementById('clearAllCompleted')
+const clearAllCompleted = document.getElementById('clearAllCompleted');
 
 /* ----------========== CREATE HTML ELEMENTS ==========---------- */
 
@@ -28,11 +28,10 @@ const createTaskHtml = (description, taskIndex) => {
   checkbox.classList.add('checkbox');
   checkbox.classList.add('checkBoxUnchecked');
   checkbox.addEventListener('click', () => {
-    console.log('index ',taskLi.id)
     todoList.taskDone(taskLi.id);
     localStorage.setItem('data', JSON.stringify(todoList.tasks));
 
-    if(checkbox.classList.contains('checkBoxUnchecked')){
+    if (checkbox.classList.contains('checkBoxUnchecked')) {
       checkbox.classList.remove('checkBoxUnchecked');
       checkbox.classList.add('checkBoxChecked');
     } else {
@@ -104,4 +103,4 @@ clearAllCompleted.addEventListener('click', () => {
   todoList.clearCompleted();
   localStorage.setItem('data', JSON.stringify(todoList.tasks));
   document.location.reload();
-})
+});

@@ -16,13 +16,13 @@ export default class Tasks {
 
   // Edit task
   editTask = (newDescription, index) => {
-    index = index -1;
+    index -= 1;
     this.tasks[index].description = newDescription;
   };
 
   // task Done
   taskDone = (index) => {
-    index = index-1;
+    index -= 1;
     let bool = this.tasks[index].completed;
     bool = !bool;
     this.tasks[index].completed = bool;
