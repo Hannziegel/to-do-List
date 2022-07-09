@@ -6,6 +6,9 @@ import Task from './Task.js';
 
 const todoList = new Tasks();
 const todoListUL = document.getElementById('todoListUL');
+const addItemInput = document.getElementById('addItemInput');
+const enterIcon = document.getElementById('enterIcon');
+const clearAllCompleted = document.getElementById('clearAllCompleted')
 
 /* ----------========== CREATE HTML ELEMENTS ==========---------- */
 
@@ -77,10 +80,6 @@ if (localStorage.getItem('data') !== null) {
 }
 
 /* ----------========== ADD ITEM ==========---------- */
-
-const addItemInput = document.getElementById('addItemInput');
-const enterIcon = document.getElementById('enterIcon');
-
 enterIcon.addEventListener('click', () => {
   createTaskHtml(addItemInput.value, todoList.tasks.length);
   todoList.addTask(new Task(addItemInput.value, false, todoList.tasks.length + 1));
@@ -99,4 +98,10 @@ window.addEventListener('click', (event) => {
   }
 });
 
-/* ----------========== CHECKBOX ITEM ==========---------- */
+/* ----------========== CLEAR ALL COMPLETED ITEM ==========---------- */
+
+clearAllCompleted.addEventListener('click', () => {
+  todoList.clearCompleted();
+  localStorage.setItem('data', JSON.stringify(todoList.tasks));
+  document.location.reload();
+})
