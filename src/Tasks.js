@@ -15,13 +15,26 @@ export default class Tasks {
   };
 
   // Edit task
+  editTask = (newDescription, index) => {
+    index -= 1;
+    this.tasks[index].description = newDescription;
+  };
 
-  editTask = (newDescription, index) => { this.tasks[index].description = newDescription; };
+  // task Done
+  taskDone = (index) => {
+    index -= 1;
+    let bool = this.tasks[index].completed;
+    bool = !bool;
+    this.tasks[index].completed = bool;
+  };
 
   // Delete all completed (called in UI by - clear All completed button)
   clearCompleted = () => {
     this.tasks.forEach(() => {
       this.tasks = this.tasks.filter((task) => task.completed !== true);
+    });
+    this.tasks.forEach((element, newIndex) => {
+      element.index = newIndex + 1;
     });
   };
 

@@ -30,12 +30,21 @@ li {
 /* Icons */
 
 .checkbox {
-  background-repeat: no-repeat;
-  background-image: url(bx-checkbox.svg);
-  background-size: cover;
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
+
+.checkBoxUnchecked {
+  background-repeat: no-repeat;
+  background-image: url(bx-checkbox.svg);
+  background-size: cover;
+}
+
+.checkBoxChecked {
+  background-repeat: no-repeat;
+  background-image: url(bx-checkbox-checked.svg);
+  background-size: cover;
 }
 
 .dragDots {

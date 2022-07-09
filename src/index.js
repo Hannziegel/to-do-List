@@ -6,6 +6,9 @@ import Task from './Task.js';
 
 const todoList = new Tasks();
 const todoListUL = document.getElementById('todoListUL');
+const addItemInput = document.getElementById('addItemInput');
+const enterIcon = document.getElementById('enterIcon');
+const clearAllCompleted = document.getElementById('clearAllCompleted');
 
 /* ----------========== CREATE HTML ELEMENTS ==========---------- */
 
@@ -23,12 +26,26 @@ const createTaskHtml = (description, taskIndex) => {
 
   const checkbox = document.createElement('div');
   checkbox.classList.add('checkbox');
+  checkbox.classList.add('checkBoxUnchecked');
+  checkbox.addEventListener('click', () => {
+    todoList.taskDone(taskLi.id);
+    localStorage.setItem('data', JSON.stringify(todoList.tasks));
+
+    if (checkbox.classList.contains('checkBoxUnchecked')) {
+      checkbox.classList.remove('checkBoxUnchecked');
+      checkbox.classList.add('checkBoxChecked');
+    } else {
+      checkbox.classList.add('checkBoxUnchecked');
+      checkbox.classList.remove('checkBoxChecked');
+    }
+  });
 
   // create input
 
   const inputDescription = document.createElement('input');
   inputDescription.classList.add('todoItemInput');
   inputDescription.value = description;
+
   // change todo
   inputDescription.addEventListener('change', () => {
     todoList.editTask(inputDescription.value, taskLi.id);
@@ -61,15 +78,7 @@ if (localStorage.getItem('data') !== null) {
   todoList.tasks = [];
 }
 
-// create element in todo list
-/* const addTasktoTodoList = new Task(inputDescription.value, false, checkbox.id);
-todoList.addTask(addTasktoTodoList); */
-
 /* ----------========== ADD ITEM ==========---------- */
-
-const addItemInput = document.getElementById('addItemInput');
-const enterIcon = document.getElementById('enterIcon');
-
 enterIcon.addEventListener('click', () => {
   createTaskHtml(addItemInput.value, todoList.tasks.length);
   todoList.addTask(new Task(addItemInput.value, false, todoList.tasks.length + 1));
@@ -86,4 +95,12 @@ window.addEventListener('click', (event) => {
     localStorage.setItem('data', JSON.stringify(todoList.tasks));
     document.location.reload();
   }
+});
+
+/* ----------========== CLEAR ALL COMPLETED ITEM ==========---------- */
+
+clearAllCompleted.addEventListener('click', () => {
+  todoList.clearCompleted();
+  localStorage.setItem('data', JSON.stringify(todoList.tasks));
+  document.location.reload();
 });
