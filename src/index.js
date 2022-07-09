@@ -23,12 +23,27 @@ const createTaskHtml = (description, taskIndex) => {
 
   const checkbox = document.createElement('div');
   checkbox.classList.add('checkbox');
+  checkbox.classList.add('checkBoxUnchecked');
+  checkbox.addEventListener('click', () => {
+    console.log('index ',taskLi.id)
+    todoList.taskDone(taskLi.id);
+    localStorage.setItem('data', JSON.stringify(todoList.tasks));
+
+    if(checkbox.classList.contains('checkBoxUnchecked')){
+      checkbox.classList.remove('checkBoxUnchecked');
+      checkbox.classList.add('checkBoxChecked');
+    } else {
+      checkbox.classList.add('checkBoxUnchecked');
+      checkbox.classList.remove('checkBoxChecked');
+    }
+  });
 
   // create input
 
   const inputDescription = document.createElement('input');
   inputDescription.classList.add('todoItemInput');
   inputDescription.value = description;
+
   // change todo
   inputDescription.addEventListener('change', () => {
     todoList.editTask(inputDescription.value, taskLi.id);
@@ -61,10 +76,6 @@ if (localStorage.getItem('data') !== null) {
   todoList.tasks = [];
 }
 
-// create element in todo list
-/* const addTasktoTodoList = new Task(inputDescription.value, false, checkbox.id);
-todoList.addTask(addTasktoTodoList); */
-
 /* ----------========== ADD ITEM ==========---------- */
 
 const addItemInput = document.getElementById('addItemInput');
@@ -87,3 +98,5 @@ window.addEventListener('click', (event) => {
     document.location.reload();
   }
 });
+
+/* ----------========== CHECKBOX ITEM ==========---------- */

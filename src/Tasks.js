@@ -15,8 +15,20 @@ export default class Tasks {
   };
 
   // Edit task
+  editTask = (newDescription, index) => {
+    index = index -1;
+    this.tasks[index].description = newDescription;
+  };
 
-  editTask = (newDescription, index) => { this.tasks[index].description = newDescription; };
+  // task Done
+  taskDone = (index) => {
+    index = index-1;
+    console.log('Not changed ', this.tasks[index].completed, typeof this.tasks[index].completed)
+    let bool = this.tasks[index].completed;
+    bool = !bool;
+    this.tasks[index].completed = bool;
+    console.log('Changed to', this.tasks[index].completed)
+  };
 
   // Delete all completed (called in UI by - clear All completed button)
   clearCompleted = () => {
