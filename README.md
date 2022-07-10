@@ -1,6 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 # To-do List:
-- To-do List project - Microverse
+-      A simple To-do app project made using JavaScript ES6 and Webpack - Microverse.
+       Feel free to see the live version, if you like it please give it a star!
 
 ## Acces link
 
